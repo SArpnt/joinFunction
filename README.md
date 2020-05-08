@@ -14,6 +14,11 @@ returns a function that is the combination of all input functions (**i**)
 returns function b but with the prototype of function **a**\
 (this is useful for replacing function class constructors (whatever they're called))
 
+### disableFunction(a)
+
+returns empty function (`function () {}`) with prototype of a,\
+but every function in the prototype (does not check inside arrays/objects)\
+is also an empty function
 
 ## examples
 
@@ -26,6 +31,7 @@ it's made to illustrate how resulting code behaves.
 function foo(a) {
 	this.a = a;
 }
+foo.prototype.fooValue = 3;
 foo.prototype.fooProto = function () {
 	this.proto = "foo";
 }
@@ -46,6 +52,7 @@ function result(ab, c) {
 	this.b = ab;
 	this.c = c;
 }
+result.prototype.fooValue = 3;
 result.prototype.fooProto = function () {
 	this.proto = "foo";
 }
@@ -61,12 +68,21 @@ function result(b, c) {
 	this.b = b;
 	this.c = c;
 }
+result.prototype.fooValue = 3;
 result.prototype.fooProto = function () {
 	this.proto = "foo";
 }
 result.prototype.barProto = function () {
 	this.proto = "bar";
 }
+```
+
+### disableFunction(foo)
+
+```js
+function result() { }
+result.prototype.fooValue = 3;
+result.prototype.fooProto = function () { }
 ```
 
 ## rules for use
