@@ -73,5 +73,6 @@ result.prototype.barProto = function () {
 
 take whatever you want from the code but please give credit and possibly a link to the repository
 
-if you put underscores as spaces in your variable names you aren't allowed to use this code
+if you put underscores or dashes as spaces in your regular variable names\
+(so not const or \#define) you aren't allowed to use this code\
 (but i won't enforce it)
