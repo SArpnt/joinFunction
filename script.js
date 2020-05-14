@@ -5,7 +5,8 @@ function joinFunction(...funcs) {
 		for (let f of funcs)
 			f.apply(this, i);
 	}
-	newFunc.prototype = Object.assign(...funcs);
+	newFunc.prototype = Object.create(funcs.reduce((a, e) => (Object.assign(a, Object.getPrototypeOf(e.prototype))), {}));
+	newFunc.prototype = funcs.reduce((a, e) => (Object.assign(a, e.prototype)), newFunc.prototype);
 	return newFunc;
 }
 
