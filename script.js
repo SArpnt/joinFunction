@@ -2,11 +2,12 @@
 
 function joinFunction(...funcs) {
 	function recursiveProtoJoin(protos) {
-		let p = protos.filter(e => e).map(e => Object.getPrototypeOf(e));
-		if (p.length)
-			return p.reduce((a, e) => (
-				Object.assign(a, e)
-			), Object.create(recursiveProtoJoin(p)));
+		if (protos.length)
+			return Object.assign(
+				Object.create(recursiveProtoJoin(
+					protos.filter(e => e).map(e => Object.getPrototypeOf(e))
+				)),
+				...protos);
 		else
 			return null;
 	}
