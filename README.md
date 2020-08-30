@@ -1,7 +1,10 @@
 # joinFunction
 
+**notice: this is mainly intended for my own use, it often has breaking changes!**\
+**this readme is also often outdated, look over the code for any new features**
+
 functions to combine and manipulate functions\
-supports class creation functions (to the best of my knowledge)
+supports class creation functions (for the most part, sometimes still has issues)
 
 ## usage
 
@@ -11,13 +14,13 @@ returns a function that is the combination of all input functions (**i**)
 
 ### overwriteFunction(a,b)
 
-returns function b but with the prototype of function **a**\
+returns function b but with the properties and prototype of function **a**\
 (this is useful for replacing function class constructors (whatever they're called))
 
 ### disableFunction(a)
 
-returns empty function (`function () {}`) with prototype of a,\
-but every function in the prototype (does not check inside arrays/objects)\
+returns empty function (`function () {}`) with properties and prototype of a,\
+but every function in the properties/prototype (does not check inside arrays/objects)\
 is also an empty function
 
 ## examples
@@ -31,7 +34,7 @@ it's made to illustrate how resulting code behaves.
 function foo(a) {
 	this.a = a;
 }
-foo.prototype.fooValue = 3;
+foo.fooValue = 3;
 foo.prototype.fooProto = function () {
 	this.proto = "foo";
 }
@@ -52,7 +55,7 @@ function result(ab, c) {
 	this.b = ab;
 	this.c = c;
 }
-result.prototype.fooValue = 3;
+result.fooValue = 3;
 result.prototype.fooProto = function () {
 	this.proto = "foo";
 }
@@ -68,7 +71,7 @@ function result(b, c) {
 	this.b = b;
 	this.c = c;
 }
-result.prototype.fooValue = 3;
+result.fooValue = 3;
 result.prototype.fooProto = function () {
 	this.proto = "foo";
 }
@@ -81,14 +84,6 @@ result.prototype.barProto = function () {
 
 ```js
 function result() { }
-result.prototype.fooValue = 3;
+result.fooValue = 3;
 result.prototype.fooProto = function () { }
 ```
-
-## rules for use
-
-take whatever you want from the code but please give credit and possibly a link to the repository
-
-if you put underscores or dashes as spaces in your regular variable names\
-(so not const or \#define) you aren't allowed to use this code\
-(but i won't enforce it)
