@@ -11,7 +11,7 @@ function joinFunction(options, ...funcs) {
 
 	function newFunc() {
 		for (let f of funcs)
-			f.apply(this, arguments);
+			Function.prototype.apply.call(f, this, arguments);
 	}
 	newFunc = Object.assign(newFunc, ...funcs);
 	if (options.prototype === 'join') {
