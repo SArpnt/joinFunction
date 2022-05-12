@@ -1,32 +1,34 @@
+## notice
+
+this project was linked to in a bunch of userscripts, any changes made will break those.
+i may create a different repo to replace this but whatever you do please don't use this code without modifying it first
+
 # joinFunction
 
-**notice: this is mainly intended for my own use, it often has breaking changes!**\
-**this readme is also often outdated, look over the code for any new features**
-
 functions to combine and manipulate functions\
-supports class creation functions (for the most part, sometimes still has issues)
+supports manipulating class constructors (for the most part, sometimes still has issues)
 
 ## usage
 
-### joinFunction(...i)
+### joinFunction(o, ...i)
 
-returns a function that is the combination of all input functions (**i**)
+returns a function that is the combination of all input functions (o and i), with the prototype of o
 
-### overwriteFunction(a,b)
+this function is supposed to have an options parameter but the code is messed up.
 
-returns function b but with the properties and prototype of function **a**\
-(this is useful for replacing function class constructors (whatever they're called))
+### overwriteFunction(a, b)
+
+returns function b but with the properties and prototype of function a.
+this is useful for replacing class constructors.
 
 ### disableFunction(a)
 
-returns empty function (`function () {}`) with properties and prototype of a,\
-but every function in the properties/prototype (does not check inside arrays/objects)\
-is also an empty function
+returns empty function with properties and prototype of a,
+but every function in the properties/prototype (not inside arrays/objects) is also an empty function.
 
 ## examples
 
-output code shown does not represent actions of functions,\
-it's made to illustrate how resulting code behaves.
+output code shown does not represent actions of functions, it's made to illustrate how resulting code behaves.
 
 ### starting conditions
 
